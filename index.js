@@ -11,12 +11,12 @@ module.exports = class SoundSensor extends Events {
         var {pin, event = 'alert', debug, duration = 100} = options;
 
 		if (pin == undefined)
-			throw new Error('Must supply a pin number.');
+			throw new Error('Must supply a pin number for VMA309.');
 
         if (typeof debug !== 'function')
     		debug = () => {};
 
-        debug('Construct options:', {pin:pin, event:event, debug:debug, duration:duration});
+        debug('Constructor options for VMA309:', {pin:pin, event:event, debug:debug, duration:duration});
 
         var gpio = new Gpio(pin, {mode: Gpio.INPUT, alert:true});
 
