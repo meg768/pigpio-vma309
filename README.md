@@ -9,7 +9,6 @@ Sound Sensor VMA309 for Raspberry Pi using npm module **pigpio**.
 
 
 ## Usage
-
 ````javascript
 var Sensor = require('pigpio-vma309');
 var sensor = new Sensor({pin:19});
