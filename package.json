@@ -7,7 +7,7 @@
     "git-commit": "git add -A && git commit -m '-' && git push",
 		"goto-github": "open https://github.com/meg768/pigpio-vma309",
 		"goto-npm": "open https://www.npmjs.com/package/pigpio-vma309",
-		"publish-to-npm": "npm run git-commit && npm publish",
+		"npm-publish": "npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
