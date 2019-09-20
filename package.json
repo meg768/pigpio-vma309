@@ -19,6 +19,11 @@
   "dependencies": {
     "pigpio": "^2.0.0"
   },
+	"keywords": [
+		"vma309",
+		"raspberry",
+		"pigpio"
+	],  
   "bugs": {
     "url": "https://github.com/meg768/pigpio-vma309/issues"
   },
