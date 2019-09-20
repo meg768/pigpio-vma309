@@ -4,6 +4,9 @@ Sound Sensor VMA309 for Raspberry Pi using npm module **pigpio**.
 ## Installation
 	$ npm install pigpio-vma309 --save
 
+
+![alt text](./images/vma309.png)
+
 ## Usage
 
 ````javascript
