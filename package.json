@@ -1,7 +1,7 @@
 {
   "name": "pigpio-vma309",
   "version": "1.0.7",
-  "description": "Sound Sensor for Raspberry Pi",
+  "description": "Sound Sensor VMA309 for Raspberry Pi",
   "main": "index.js",
   "scripts": {
     "git-commit": "git add -A && git commit -m '-' && git push",
