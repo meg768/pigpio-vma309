@@ -15,6 +15,6 @@ var Sensor = require('pigpio-vma309');
 var sensor = new Sensor({pin:19});
 
 sensor.on('alert', (duration) => {
-    console.log('Sound detected', duration);
+    console.log('Sound detected for %d milliseconds', duration);
 });
 ````
