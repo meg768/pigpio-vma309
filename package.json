@@ -1,6 +1,6 @@
 {
   "name": "pigpio-vma309",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Sound Sensor for Raspberry Pi",
   "main": "index.js",
   "scripts": {
