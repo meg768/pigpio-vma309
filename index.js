@@ -11,14 +11,15 @@ module.exports = class SoundSensor extends Events {
 
 		super();
 
-		options = Object.assign({}, options);
+        var {pin, debug} = options;
 
-		if (options.pin == undefined)
+		if (pin == undefined)
 			throw new Error('Must supply a pin number.');
 
-		var debug = isFunction(options.debug) ? options.debug : function(){};
+        if (!isFunction(debug))
+    		debug = function(){};
 
-		var gpio = new Gpio(options.pin, {mode: Gpio.INPUT, alert: true});
+		var gpio = new Gpio(pin, {mode: Gpio.INPUT, alert:true});
 		//var gpio = new Gpio(options.pin, {mode: Gpio.INPUT, edge: Gpio.FALLING_EDGE});
 
 		var timeout = null;
