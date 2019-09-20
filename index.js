@@ -1,9 +1,6 @@
 var Events     = require('events');
 var Gpio       = require('pigpio').Gpio;
 
-function isFunction(obj) {
-	return typeof obj === 'function';
-};
 
 module.exports = class SoundSensor extends Events {
 
@@ -16,18 +13,20 @@ module.exports = class SoundSensor extends Events {
 		if (pin == undefined)
 			throw new Error('Must supply a pin number.');
 
-        if (!isFunction(debug))
+        if (typeof debug !== 'function')
     		debug = function(){};
 
-		var gpio = new Gpio(pin, {mode: Gpio.INPUT, alert:true});
+        debug('Construct options:', {pin:pin, event:event, debug:debug, delay:delay});
+
+        var gpio = new Gpio(pin, {mode: Gpio.INPUT, alert:true});
 
 		var timeout = null;
 		var timestamp = null;
 
-		gpio.on(event, (level, tick) => {
+		gpio.on('alert', (level, tick) => {
 			if (level > 0) {
 
-				debug('Alert', level, tick);
+				debug('GPIO alert: Level: %d, timestamp: %d', level, tick);
 
 				if (timeout != null) {
 					clearTimeout(timeout);
@@ -39,22 +38,18 @@ module.exports = class SoundSensor extends Events {
 				}
 
 				timeout = setTimeout(() => {
-					var duration = (tick >> 0) - (timestamp >> 0);
+					var duration = ((tick >> 0) - (timestamp >> 0)) / 1000;
 
-					debug('Sound suration', duration);
-					this.emit('alert', duration);
+					debug('Sound duration: %d ms', duration);
+					this.emit(event, duration);
 
 					clearTimeout(timeout);
 					timeout = null;
 					timestamp = null;
 
 				}, delay);
-				
 			}
 
 		});
 	}
-
-
-
 };
